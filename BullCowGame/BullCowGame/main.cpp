@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
+#include "FBullCowGame.h"
 
 void PrintIntro();
 void PlayGame();
 bool AskToPlayAgain();
 std::string GetGuess();
 
+FBullCowGame FBCGame;
 
 int main() {
 
@@ -31,7 +33,8 @@ void PrintIntro()
 
 void PlayGame()
 {
-	int NumberOfTurns = 5;
+	FBCGame.Reset();
+	int NumberOfTurns = FBCGame.GetMaxTries();
 
 	for (int i = 0; i<NumberOfTurns; i++)
 	{
@@ -44,8 +47,9 @@ void PlayGame()
 std::string GetGuess()
 {
 	std::string Guess = "";
+	int CurrentTry = FBCGame.GetCurrentTry();
 
-	std::cout << "Enter Your guess: ";
+	std::cout << "Try " << CurrentTry << ". Enter Your guess: ";
 	getline(std::cin, Guess);
 
 	return Guess;
