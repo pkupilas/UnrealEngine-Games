@@ -11,49 +11,53 @@ string GetGuess();
 
 int main() {
 
-	PrintIntro();
-	PlayGame();
-	cout << "Result: " << AskToPlayAgain() << endl;
+	bool bPlayAgain = false;
+
+	do
+	{
+		PrintIntro();
+		PlayGame();
+		bPlayAgain = AskToPlayAgain();
+	} while (bPlayAgain);
 
 	return 0;
 }
 
 void PrintIntro()
 {
-	constexpr int WORD_LENGTH = 5;
+	constexpr int WordLength = 5;
 	
 	cout << "Welcome to Bulls and Cows game.\n";
-	cout << "Can You guess the " << WORD_LENGTH << " letter isogram I'm thinking of?\n";
+	cout << "Can You guess the " << WordLength << " letter isogram I'm thinking of?\n";
 }
 
 void PlayGame()
 {
-	int NUMBER_OF_TURNS = 5;
+	int NumberOfTurns = 5;
 
-	for (int i = 0; i<NUMBER_OF_TURNS; i++)
+	for (int i = 0; i<NumberOfTurns; i++)
 	{
-		string guess = GetGuess();
+		string Guess = GetGuess();
 
-		cout << "Your guess: " << guess << endl;
-		cout << endl;
+		cout << "Your guess: " << Guess << endl << endl;
 	}
 }
 
 string GetGuess()
 {
-	string guess = "";
+	string Guess = "";
 
 	cout << "Enter Your guess: ";
-	getline(cin, guess);
+	getline(cin, Guess);
 
-	return guess;
+	return Guess;
 }
 
 bool AskToPlayAgain()
 {
-	cout << "Do You want to play again? (yes/no)\n" << "Answer: ";
-	string response = "";
-	getline(cin, response);
+	cout << "Do You want to play again? (yes/no)\nAnswer: ";
+	string Response = "";
+	getline(cin, Response);
 
-	return response[0]=='y' || response[0] == 'Y';
+	return Response[0]=='y' || Response[0] == 'Y';
 }
