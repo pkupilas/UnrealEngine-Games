@@ -2,10 +2,13 @@
 #include <string>
 #include "FBullCowGame.h"
 
+using FString = std::string;
+using int32 = int;
+
 void PrintIntro();
 void PlayGame();
 bool AskToPlayAgain();
-std::string GetGuess();
+FString GetGuess();
 
 FBullCowGame FBCGame;
 
@@ -25,7 +28,7 @@ int main() {
 
 void PrintIntro()
 {
-	constexpr int WordLength = 5;
+	constexpr int32 WordLength = 5;
 
 	std::cout << "Welcome to Bulls and Cows game.\n";
 	std::cout << "Can You guess the " << WordLength << " letter isogram I'm thinking of?\n";
@@ -34,20 +37,20 @@ void PrintIntro()
 void PlayGame()
 {
 	FBCGame.Reset();
-	int NumberOfTurns = FBCGame.GetMaxTries();
+	int32 NumberOfTurns = FBCGame.GetMaxTries();
 
-	for (int i = 0; i<NumberOfTurns; i++)
+	for (int32 i = 0; i<NumberOfTurns; i++)
 	{
-		std::string Guess = GetGuess();
+		FString Guess = GetGuess();
 
 		std::cout << "Your guess: " << Guess << std::endl << std::endl;
 	}
 }
 
-std::string GetGuess()
+FString GetGuess()
 {
-	std::string Guess = "";
-	int CurrentTry = FBCGame.GetCurrentTry();
+	FString Guess = "";
+	int32 CurrentTry = FBCGame.GetCurrentTry();
 
 	std::cout << "Try " << CurrentTry << ". Enter Your guess: ";
 	getline(std::cin, Guess);
@@ -58,7 +61,7 @@ std::string GetGuess()
 bool AskToPlayAgain()
 {
 	std::cout << "Do You want to play again? (yes/no)\nAnswer: ";
-	std::string Response = "";
+	FString Response = "";
 	getline(std::cin, Response);
 
 	return Response[0]=='y' || Response[0] == 'Y';
