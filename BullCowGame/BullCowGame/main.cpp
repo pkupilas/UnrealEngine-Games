@@ -4,19 +4,16 @@
 using namespace std;
 
 void PrintIntro();
-string GetGuessAndPrintBack();
+void PlayGame();
+bool AskToPlayAgain();
+string GetGuess();
+
 
 int main() {
 
-	int NUMBER_OF_TURNS = 5;
-
 	PrintIntro();
-
-	for (int i=0;i<NUMBER_OF_TURNS;i++)
-	{
-		GetGuessAndPrintBack();
-		cout << endl;
-	}
+	PlayGame();
+	cout << "Result: " << AskToPlayAgain() << endl;
 
 	return 0;
 }
@@ -29,12 +26,34 @@ void PrintIntro()
 	cout << "Can You guess the " << WORD_LENGTH << " letter isogram I'm thinking of?\n";
 }
 
-string GetGuessAndPrintBack()
+void PlayGame()
+{
+	int NUMBER_OF_TURNS = 5;
+
+	for (int i = 0; i<NUMBER_OF_TURNS; i++)
+	{
+		string guess = GetGuess();
+
+		cout << "Your guess: " << guess << endl;
+		cout << endl;
+	}
+}
+
+string GetGuess()
 {
 	string guess = "";
+
 	cout << "Enter Your guess: ";
 	getline(cin, guess);
-	cout << "Your guess: " << guess << endl;
 
 	return guess;
+}
+
+bool AskToPlayAgain()
+{
+	cout << "Do You want to play again? (yes/no)\n" << "Answer: ";
+	string response = "";
+	getline(cin, response);
+
+	return response[0]=='y' || response[0] == 'Y';
 }
