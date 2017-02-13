@@ -7,6 +7,7 @@ using int32 = int;
 
 void PrintIntro();
 void PlayGame();
+void PrintGameSummary();
 bool AskToPlayAgain();
 FString GetValidGuess();
 
@@ -42,6 +43,20 @@ void PlayGame()
 		FString Guess = GetValidGuess();
 		FBullCowCount BullCowCount = FBCGame.SubmitValidGuess(Guess);
 		FBCGame.PrintBullCowCount(BullCowCount);
+	}
+
+	PrintGameSummary();
+}
+
+void PrintGameSummary()
+{
+	if(FBCGame.IsGameWon())
+	{
+		std::cout << "\nCongratz! You won!\n";
+	}
+	else
+	{
+		std::cout << "\nSorry, You lost.\n";
 	}
 }
 
