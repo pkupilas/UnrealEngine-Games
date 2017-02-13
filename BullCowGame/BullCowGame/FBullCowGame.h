@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <map>
+#define TMap = std::map
 
 using FString = std::string;
 using int32 = int;
@@ -25,7 +27,6 @@ public:
 	int32 GetCurrentTry() const;
 	bool IsGameWon() const;
 	int32 GetHiddenWordLength() const;
-	bool IsIsogram(FString) const;
 	bool IsAllLowercase(FString) const;
 	bool IsProperLength(FString) const;
 	EGuessStatus GetGuessStatusValidity(FString);
@@ -38,5 +39,6 @@ private:
 	int32 MyMaxTries;
 	FString MyHiddenWord;
 	bool bGameIsWon;
+	bool IsIsogram(FString) const;
 
 };

@@ -28,14 +28,22 @@ bool FBullCowGame::IsGameWon() const
 
 bool FBullCowGame::IsIsogram(FString Guess) const
 {
-	for (int32 i = 0; i < Guess.length()-1; i++)
+	if (Guess.length() <= 1)
 	{
-		for(int32 j = i+1;j<Guess.length();j++)
+		return true;
+	}
+
+	std::map<char, bool> LetterSeen; // TMap not working?
+	for(auto Letter : Guess)
+	{
+		Letter = tolower(Letter);
+		if(LetterSeen[Letter])
 		{
-			if(Guess[i]==Guess[j])
-			{
-				return false;
-			}
+			return false;
+		}
+		else
+		{
+			LetterSeen[Letter] = true;
 		}
 	}
 
