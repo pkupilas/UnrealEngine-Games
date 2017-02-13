@@ -42,8 +42,8 @@ void PlayGame()
 	for (int32 i = 0; i<NumberOfTurns; i++)
 	{
 		FString Guess = GetGuess();
-
-		std::cout << "Your guess: " << Guess << std::endl << std::endl;
+		FBullCowCount BullCowCount = FBCGame.SubmitGuess(Guess);
+		FBCGame.PrintBullCowCount(BullCowCount);
 	}
 }
 

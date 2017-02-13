@@ -1,4 +1,5 @@
 #include "FBullCowGame.h"
+#include <iostream>
 
 FBullCowGame::FBullCowGame()
 {
@@ -35,15 +36,34 @@ bool FBullCowGame::CheckGuessValidity(FString Guess)
 	return false;
 }
 
-BullCowCount FBullCowGame::SubmitGuess(FString Guess)
+void FBullCowGame::PrintBullCowCount(FBullCowCount BullCowCount)
+{
+	std::cout << "Bulls= " << BullCowCount.Bulls << ", Cows= " <<  BullCowCount.Cows << std::endl;
+}
+
+FBullCowCount FBullCowGame::SubmitGuess(FString Guess)
 {
 	MyCurrentTry++;
-	BullCowCount BullCowCount;
+	FBullCowCount BullCowCount;
 
 	for(int32 i = 0; i < MyHiddenWord.length(); i++)
 	{
-		//compare between word and guess
+		for (int32 j = 0; j < Guess.length(); j++)
+		{
+			if (MyHiddenWord[i] == Guess[j])
+			{
+				if(i==j)
+				{
+					BullCowCount.Bulls++;
+				}
+				else
+				{
+					BullCowCount.Cows++;
+				}
+			}
+		}
 	}
 
 	return BullCowCount;
 }
+
