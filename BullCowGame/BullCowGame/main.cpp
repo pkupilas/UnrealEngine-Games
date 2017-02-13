@@ -37,10 +37,10 @@ void PlayGame()
 	FBCGame.Reset();
 	int32 NumberOfTurns = FBCGame.GetMaxTries();
 
-	for (int32 i = 0; i<NumberOfTurns; i++)
+	while(!FBCGame.IsGameWon() && FBCGame.GetCurrentTry()<=NumberOfTurns)
 	{
 		FString Guess = GetValidGuess();
-		FBullCowCount BullCowCount = FBCGame.SubmitGuess(Guess);
+		FBullCowCount BullCowCount = FBCGame.SubmitValidGuess(Guess);
 		FBCGame.PrintBullCowCount(BullCowCount);
 	}
 }

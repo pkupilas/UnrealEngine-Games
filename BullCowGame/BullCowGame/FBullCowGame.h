@@ -29,7 +29,7 @@ public:
 	bool IsAllLowercase(FString) const;
 	bool IsProperLength(FString) const;
 	EGuessStatus GetGuessStatusValidity(FString);
-	FBullCowCount SubmitGuess(FString);
+	FBullCowCount SubmitValidGuess(FString);
 	void Reset();
 	void PrintBullCowCount(FBullCowCount);
 	
@@ -37,5 +37,6 @@ private:
 	int32 MyCurrentTry;
 	int32 MyMaxTries;
 	FString MyHiddenWord;
+	bool bGameIsWon;
 
 };
