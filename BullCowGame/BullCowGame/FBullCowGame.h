@@ -10,12 +10,11 @@ struct FBullCowCount
 	int32 Cows = 0;
 };
 
-enum class EWordStatus
+enum class EGuessStatus
 {
 	OK,
 	Not_Isogram,
-	Too_Short,
-	Too_Long,
+	Wrong_Length,
 	Not_Lowercase
 };
 
@@ -26,12 +25,13 @@ public:
 	int32 GetCurrentTry() const;
 	bool IsGameWon() const;
 	int32 GetHiddenWordLength() const;
-
-	void Reset();
-	EWordStatus CheckGuessValidity(FString);
-	void PrintBullCowCount(FBullCowCount);
-
+	bool IsIsogram(FString) const;
+	bool IsAllLowercase(FString) const;
+	bool IsProperLength(FString) const;
+	EGuessStatus GetGuessStatusValidity(FString);
 	FBullCowCount SubmitGuess(FString);
+	void Reset();
+	void PrintBullCowCount(FBullCowCount);
 	
 private:
 	int32 MyCurrentTry;

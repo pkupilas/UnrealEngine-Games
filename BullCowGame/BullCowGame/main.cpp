@@ -8,7 +8,7 @@ using int32 = int;
 void PrintIntro();
 void PlayGame();
 bool AskToPlayAgain();
-FString GetGuess();
+FString GetValidGuess();
 
 FBullCowGame FBCGame;
 
@@ -39,19 +39,46 @@ void PlayGame()
 
 	for (int32 i = 0; i<NumberOfTurns; i++)
 	{
-		FString Guess = GetGuess();
+		FString Guess = GetValidGuess();
 		FBullCowCount BullCowCount = FBCGame.SubmitGuess(Guess);
 		FBCGame.PrintBullCowCount(BullCowCount);
 	}
 }
 
-FString GetGuess()
+bool IsGuessValid(FString Guess)
+{
+	EGuessStatus GuessStatus = FBCGame.GetGuessStatusValidity(Guess);
+	bool IsValid = false;
+
+	switch (GuessStatus)
+	{
+	case EGuessStatus::Not_Isogram:
+		std::cout << "\nYour guess is not isogram!\n";
+		break;
+	case EGuessStatus::Not_Lowercase:
+		std::cout << "\nYour guess is not all lowercase!\n";
+		break;
+	case EGuessStatus::Wrong_Length:
+		std::cout << "\nYour guess length is wrong!\n";
+		break;
+	default:
+		IsValid = true;
+	}
+
+	return IsValid;
+}
+
+FString GetValidGuess()
 {
 	FString Guess = "";
 	int32 CurrentTry = FBCGame.GetCurrentTry();
 
-	std::cout << "Try " << CurrentTry << ". Enter Your guess: ";
-	getline(std::cin, Guess);
+	do
+	{
+		std::cout << "Try " << CurrentTry << ". Enter Your guess: ";
+		getline(std::cin, Guess);
+	} while (!IsGuessValid(Guess));
+
 
 	return Guess;
 }
