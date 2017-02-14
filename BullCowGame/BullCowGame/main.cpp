@@ -30,7 +30,7 @@ int main() {
 void PrintIntro()
 {
 	std::cout << "Welcome to Bulls and Cows game.\n";
-	std::cout << "Can You guess the " << FBCGame.GetHiddenWordLength() << " letter isogram I'm thinking of?\n";
+	std::cout << "Can You guess the " << FBCGame.GetHiddenWordLength() << " letter isogram I'm thinking of?\n\n";
 }
 
 void PlayGame()
@@ -52,7 +52,7 @@ void PrintGameSummary()
 {
 	if(FBCGame.IsGameWon())
 	{
-		std::cout << "\nCongratz! You won!\n";
+		std::cout << "Congratz! You won!\n";
 	}
 	else
 	{
@@ -68,13 +68,13 @@ bool IsGuessValid(FString Guess)
 	switch (GuessStatus)
 	{
 	case EGuessStatus::Not_Isogram:
-		std::cout << "\nYour guess is not isogram!\n";
+		std::cout << "There must be only one letter of the same type in the word!\n\n";
 		break;
 	case EGuessStatus::Not_Lowercase:
-		std::cout << "\nYour guess is not all lowercase!\n";
+		std::cout << "All letters must be lowercase!\n\n";
 		break;
 	case EGuessStatus::Wrong_Length:
-		std::cout << "\nYour guess length is wrong!\n";
+		std::cout << "The word must have exacly " << FBCGame.GetHiddenWordLength() << " letters!\n\n";
 		break;
 	default:
 		IsValid = true;
@@ -90,7 +90,7 @@ FString GetValidGuess()
 
 	do
 	{
-		std::cout << "Try " << CurrentTry << ". Enter Your guess: ";
+		std::cout << "Try " << CurrentTry << " of " << FBCGame.GetMaxTries() << ". Enter Your guess: ";
 		getline(std::cin, Guess);
 	} while (!IsGuessValid(Guess));
 

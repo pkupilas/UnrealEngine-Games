@@ -99,7 +99,7 @@ EGuessStatus FBullCowGame::GetGuessStatusValidity(FString Guess)
 
 void FBullCowGame::PrintBullCowCount(FBullCowCount BullCowCount)
 {
-	std::cout << "Bulls= " << BullCowCount.Bulls << ", Cows= " <<  BullCowCount.Cows << std::endl;
+	std::cout << "Bulls= " << BullCowCount.Bulls << ", Cows= " <<  BullCowCount.Cows << std::endl << std::endl;
 }
 
 FBullCowCount FBullCowGame::SubmitValidGuess(FString Guess)
