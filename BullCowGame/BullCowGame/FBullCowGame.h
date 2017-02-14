@@ -1,8 +1,14 @@
+/*
+ * Here is game logic.
+ * BullCowGame is simple game based on mastermind.
+ */
+
 #pragma once
 #include <string>
 #include <map>
-#define TMap = std::map
 
+// to make sytax Unreal friendly
+#define TMap std::map
 using FString = std::string;
 using int32 = int;
 
@@ -34,7 +40,6 @@ public:
 	
 private:
 	int32 MyCurrentTry;
-	int32 MyMaxTries;
 	FString MyHiddenWord;
 	bool bGameIsWon;
 	bool IsIsogram(FString) const;

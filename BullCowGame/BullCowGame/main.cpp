@@ -1,7 +1,14 @@
+/*
+	This is console BullCowGame.
+	All logic is gathered in FBullCowGame class.
+*/
+
+#pragma once
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
 
+// to make syntax Unreal friendly
 using FString = std::string;
 using int32 = int;
 
