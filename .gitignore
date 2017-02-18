@@ -343,3 +343,13 @@ __pycache__/
 # !tools/packages.config
 
 # End of https://www.gitignore.io/api/visualstudio,unrealengine
+
+#####################
+## ADDED BY ME ######
+#####################
+BuildingEscape/Build/
+BuildingEscape/Binaries/
+BuildingEscape/DerivedDataCache/
+BuildingEscape/Intermediate/
+BuildingEscape/Saved/
+BuildingEscape/Content/StarterContent/
