@@ -21,8 +21,8 @@ void UOpenDoor::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	auto Owner = GetOwner();
-	auto NewRotator = FRotator(0.0f, -60.0f, 0.0f);
+	AActor* Owner = GetOwner();
+	FRotator NewRotator = Owner->GetTransform().GetRotation().Rotator() + FRotator(0.0f, -90.0f, 0.0f);
 	Owner->SetActorRotation(NewRotator);
 }
 
