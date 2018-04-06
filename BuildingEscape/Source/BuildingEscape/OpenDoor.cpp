@@ -28,16 +28,30 @@ void UOpenDoor::BeginPlay()
 void UOpenDoor::TickComponent( float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction )
 {
 	Super::TickComponent( DeltaTime, TickType, ThisTickFunction );
-	if (PressurePlate != nullptr && OpeningActor != nullptr && PressurePlate->IsOverlappingActor(OpeningActor))
+	if (PressurePlate != nullptr && OpeningActor != nullptr) 
 	{
-		OpenDoor();
+		float currentTime = GetWorld()->GetTimeSeconds();
+		if (!IsOpen) 
+		{
+			if (PressurePlate->IsOverlappingActor(OpeningActor))
+			{
+				ManageDoorRotation(0.0f, -OpenAngle, 0.0f);
+				DoorOpenUpTimeStamp = GetWorld()->GetTimeSeconds();
+				IsOpen = true;
+			}
+		}
+		else if (DoorOpenUpTimeStamp + TimeForDoorCloseUp <= currentTime)
+		{
+			ManageDoorRotation(0.0f, OpenAngle, 0.0f);
+			IsOpen = false;
+		}
 	}
 }
 
-void UOpenDoor::OpenDoor() 
+void UOpenDoor::ManageDoorRotation(float pitch, float roll, float yaw)
 {
 	AActor* Owner = GetOwner();
-	FRotator NewRotator = Owner->GetTransform().GetRotation().Rotator() + FRotator(0.0f, -90.0f, 0.0f);
+	FRotator NewRotator = Owner->GetTransform().GetRotation().Rotator() + FRotator(pitch, roll, yaw);
 	Owner->SetActorRotation(NewRotator);
 }
 
