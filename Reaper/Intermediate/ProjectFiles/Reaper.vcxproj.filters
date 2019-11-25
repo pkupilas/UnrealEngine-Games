@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\Reaper.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{6475C6B0-22AE-4285-9F2A-8596B244EB76}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Reaper.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\ReaperEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{DEC4EB07-F1F5-4E07-98EC-6DB18DFA7C7F}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\Reaper">
+      <UniqueIdentifier>{66E630EE-555D-4512-9BFC-AC3AE4C9E693}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Reaper\Cartridge.cpp">
+      <Filter>Source\Reaper</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Reaper\Cartridge.h">
+      <Filter>Source\Reaper</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\Reaper\Reaper.Build.cs">
+      <Filter>Source\Reaper</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\Reaper\Reaper.cpp">
+      <Filter>Source\Reaper</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Reaper\Reaper.h">
+      <Filter>Source\Reaper</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
