@@ -40,8 +40,6 @@ void EmptyLinkFunctionForGeneratedCodeCartridge() {}
 	};
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UCartridge_Statics::Class_MetaDataParams[] = {
-		{ "BlueprintSpawnableComponent", "" },
-		{ "ClassGroupNames", "Custom" },
 		{ "IncludePath", "Cartridge.h" },
 		{ "ModuleRelativePath", "Cartridge.h" },
 	};
@@ -61,7 +59,7 @@ void EmptyLinkFunctionForGeneratedCodeCartridge() {}
 		0,
 		0,
 		0,
-		0x00B000A4u,
+		0x00B000A5u,
 		METADATA_PARAMS(Z_Construct_UClass_UCartridge_Statics::Class_MetaDataParams, ARRAY_COUNT(Z_Construct_UClass_UCartridge_Statics::Class_MetaDataParams))
 	};
 	UClass* Z_Construct_UClass_UCartridge()
@@ -73,7 +71,7 @@ void EmptyLinkFunctionForGeneratedCodeCartridge() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UCartridge, 115044639);
+	IMPLEMENT_CLASS(UCartridge, 823600969);
 	template<> REAPER_API UClass* StaticClass<UCartridge>()
 	{
 		return UCartridge::StaticClass();

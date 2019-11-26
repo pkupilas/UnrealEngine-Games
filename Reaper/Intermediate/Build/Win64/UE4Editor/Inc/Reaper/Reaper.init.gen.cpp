@@ -11,18 +11,22 @@
 #endif
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeReaper_init() {}
+	REAPER_API UFunction* Z_Construct_UDelegateFunction_Reaper_TextUpdateSignature__DelegateSignature();
 	UPackage* Z_Construct_UPackage__Script_Reaper()
 	{
 		static UPackage* ReturnPackage = nullptr;
 		if (!ReturnPackage)
 		{
+			static UObject* (*const SingletonFuncArray[])() = {
+				(UObject* (*)())Z_Construct_UDelegateFunction_Reaper_TextUpdateSignature__DelegateSignature,
+			};
 			static const UE4CodeGen_Private::FPackageParams PackageParams = {
 				"/Script/Reaper",
-				nullptr,
-				0,
+				SingletonFuncArray,
+				ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0xBC53111E,
-				0x6C0832E1,
+				0xE550DA5D,
+				0xD35D9BA9,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UE4CodeGen_Private::ConstructUPackage(ReturnPackage, PackageParams);

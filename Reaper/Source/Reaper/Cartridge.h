@@ -2,27 +2,33 @@
 
 #pragma once
 
+#pragma once
+
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Cartridge.generated.h"
 
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(Abstract)
 class REAPER_API UCartridge : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
-	// Sets default values for this component's properties
-	UCartridge();
-
+public:
+	virtual void OnInput(const FString& Input) PURE_VIRTUAL(UCartridge::OnInput, );
 protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
+	void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	void PrintLine(const FString& Line) const;
+	void PrintLine(const TCHAR* Line) const; // Avoid template for this case.
+	template<SIZE_T N, typename ...Types>
+	void PrintLine(const TCHAR(&Fmt)[N], Types... Args) const
+	{
+		PrintLine(FString::Printf(Fmt, Args...));
+	}
+	void ClearScreen() const;
+private:
+	class UTerminal* Terminal;
 
 		
 };

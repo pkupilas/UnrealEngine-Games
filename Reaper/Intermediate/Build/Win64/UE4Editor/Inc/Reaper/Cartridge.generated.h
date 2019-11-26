@@ -13,29 +13,29 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define REAPER_Cartridge_generated_h
 
-#define Reaper_Source_Reaper_Cartridge_h_13_RPC_WRAPPERS
-#define Reaper_Source_Reaper_Cartridge_h_13_RPC_WRAPPERS_NO_PURE_DECLS
-#define Reaper_Source_Reaper_Cartridge_h_13_INCLASS_NO_PURE_DECLS \
+#define Reaper_Source_Reaper_Cartridge_h_15_RPC_WRAPPERS
+#define Reaper_Source_Reaper_Cartridge_h_15_RPC_WRAPPERS_NO_PURE_DECLS
+#define Reaper_Source_Reaper_Cartridge_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUCartridge(); \
 	friend struct Z_Construct_UClass_UCartridge_Statics; \
 public: \
-	DECLARE_CLASS(UCartridge, UActorComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Reaper"), NO_API) \
+	DECLARE_CLASS(UCartridge, UActorComponent, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/Reaper"), NO_API) \
 	DECLARE_SERIALIZER(UCartridge)
 
 
-#define Reaper_Source_Reaper_Cartridge_h_13_INCLASS \
+#define Reaper_Source_Reaper_Cartridge_h_15_INCLASS \
 private: \
 	static void StaticRegisterNativesUCartridge(); \
 	friend struct Z_Construct_UClass_UCartridge_Statics; \
 public: \
-	DECLARE_CLASS(UCartridge, UActorComponent, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Reaper"), NO_API) \
+	DECLARE_CLASS(UCartridge, UActorComponent, COMPILED_IN_FLAGS(CLASS_Abstract | CLASS_Config), CASTCLASS_None, TEXT("/Script/Reaper"), NO_API) \
 	DECLARE_SERIALIZER(UCartridge)
 
 
-#define Reaper_Source_Reaper_Cartridge_h_13_STANDARD_CONSTRUCTORS \
+#define Reaper_Source_Reaper_Cartridge_h_15_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API UCartridge(const FObjectInitializer& ObjectInitializer); \
+	NO_API UCartridge(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UCartridge) \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UCartridge); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UCartridge); \
@@ -46,7 +46,9 @@ private: \
 public:
 
 
-#define Reaper_Source_Reaper_Cartridge_h_13_ENHANCED_CONSTRUCTORS \
+#define Reaper_Source_Reaper_Cartridge_h_15_ENHANCED_CONSTRUCTORS \
+	/** Standard constructor, called after all reflected properties have been initialized */ \
+	NO_API UCartridge(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API UCartridge(UCartridge&&); \
@@ -54,29 +56,29 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UCartridge); \
 DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UCartridge); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UCartridge)
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UCartridge)
 
 
-#define Reaper_Source_Reaper_Cartridge_h_13_PRIVATE_PROPERTY_OFFSET
-#define Reaper_Source_Reaper_Cartridge_h_10_PROLOG
-#define Reaper_Source_Reaper_Cartridge_h_13_GENERATED_BODY_LEGACY \
+#define Reaper_Source_Reaper_Cartridge_h_15_PRIVATE_PROPERTY_OFFSET
+#define Reaper_Source_Reaper_Cartridge_h_12_PROLOG
+#define Reaper_Source_Reaper_Cartridge_h_15_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Reaper_Source_Reaper_Cartridge_h_13_PRIVATE_PROPERTY_OFFSET \
-	Reaper_Source_Reaper_Cartridge_h_13_RPC_WRAPPERS \
-	Reaper_Source_Reaper_Cartridge_h_13_INCLASS \
-	Reaper_Source_Reaper_Cartridge_h_13_STANDARD_CONSTRUCTORS \
+	Reaper_Source_Reaper_Cartridge_h_15_PRIVATE_PROPERTY_OFFSET \
+	Reaper_Source_Reaper_Cartridge_h_15_RPC_WRAPPERS \
+	Reaper_Source_Reaper_Cartridge_h_15_INCLASS \
+	Reaper_Source_Reaper_Cartridge_h_15_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Reaper_Source_Reaper_Cartridge_h_13_GENERATED_BODY \
+#define Reaper_Source_Reaper_Cartridge_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Reaper_Source_Reaper_Cartridge_h_13_PRIVATE_PROPERTY_OFFSET \
-	Reaper_Source_Reaper_Cartridge_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
-	Reaper_Source_Reaper_Cartridge_h_13_INCLASS_NO_PURE_DECLS \
-	Reaper_Source_Reaper_Cartridge_h_13_ENHANCED_CONSTRUCTORS \
+	Reaper_Source_Reaper_Cartridge_h_15_PRIVATE_PROPERTY_OFFSET \
+	Reaper_Source_Reaper_Cartridge_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	Reaper_Source_Reaper_Cartridge_h_15_INCLASS_NO_PURE_DECLS \
+	Reaper_Source_Reaper_Cartridge_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

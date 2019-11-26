@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Reaper.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{6475C6B0-22AE-4285-9F2A-8596B244EB76}</UniqueIdentifier>
+      <UniqueIdentifier>{741F6F84-3B20-4496-9B9D-7985E2CAFB43}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Reaper.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{DEC4EB07-F1F5-4E07-98EC-6DB18DFA7C7F}</UniqueIdentifier>
+      <UniqueIdentifier>{0BF5C8AC-DFAC-428B-96D6-E1D9625F3E92}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,7 +30,7 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\Reaper">
-      <UniqueIdentifier>{66E630EE-555D-4512-9BFC-AC3AE4C9E693}</UniqueIdentifier>
+      <UniqueIdentifier>{D823708A-860E-4BA3-BB04-63E18130321C}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\Reaper\Cartridge.cpp">
       <Filter>Source\Reaper</Filter>
@@ -45,6 +45,18 @@
       <Filter>Source\Reaper</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Reaper\Reaper.h">
+      <Filter>Source\Reaper</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Reaper\ReaperCartridge.cpp">
+      <Filter>Source\Reaper</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Reaper\ReaperCartridge.h">
+      <Filter>Source\Reaper</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Reaper\Terminal.cpp">
+      <Filter>Source\Reaper</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Reaper\Terminal.h">
       <Filter>Source\Reaper</Filter>
     </ClInclude>
   </ItemGroup>
