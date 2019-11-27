@@ -353,3 +353,9 @@ BuildingEscape/DerivedDataCache/
 BuildingEscape/Intermediate/
 BuildingEscape/Saved/
 BuildingEscape/Content/StarterContent/
+
+GAS/Build/
+GAS/Binaries/
+GAS/DerivedDataCache/
+GAS/Intermediate/
+GAS/Saved/
