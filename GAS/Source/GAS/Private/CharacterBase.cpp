@@ -39,7 +39,7 @@ UAbilitySystemComponent* ACharacterBase::GetAbilitySystemComponent() const
 
 void ACharacterBase::AquireAbility(TSubclassOf<UGameplayAbility> AbilityToAquire)
 {
-	if (!AbilitySystemComponent || AbilityToAquire)
+	if (!AbilitySystemComponent || !AbilityToAquire)
 		return;
 
 	FGameplayAbilitySpecDef AbilitySpecDef = FGameplayAbilitySpecDef();
