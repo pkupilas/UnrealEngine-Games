@@ -347,12 +347,11 @@ __pycache__/
 #####################
 ## ADDED BY ME ######
 #####################
-BuildingEscape/Build/
-BuildingEscape/Binaries/
-BuildingEscape/DerivedDataCache/
-BuildingEscape/Intermediate/
-BuildingEscape/Saved/
-BuildingEscape/Content/StarterContent/
+TheBuildingEscape/Build/
+TheBuildingEscape/Binaries/
+TheBuildingEscape/DerivedDataCache/
+TheBuildingEscape/Intermediate/
+TheBuildingEscape/Saved/
 
 GAS/Build/
 GAS/Binaries/
