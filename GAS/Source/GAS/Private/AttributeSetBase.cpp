@@ -5,7 +5,8 @@
 
 UAttributeSetBase::UAttributeSetBase()
 {
-	Health = 200.0f;
+	Health = 100.0f;
+	MaxHealth = 100.0f;
 }
 
 void UAttributeSetBase::PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData &Data)
@@ -15,6 +16,6 @@ void UAttributeSetBase::PostGameplayEffectExecute(const struct FGameplayEffectMo
 
 	if (changedProperty == healthProperty)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("%f"), Health.GetCurrentValue());
+		HealthChanged.Broadcast(Health.GetCurrentValue(), MaxHealth.GetCurrentValue());
 	}
 }
