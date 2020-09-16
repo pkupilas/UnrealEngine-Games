@@ -11,11 +11,9 @@ UAttributeSetBase::UAttributeSetBase()
 
 void UAttributeSetBase::PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData &Data)
 {
-	UProperty* changedProperty = Data.EvaluatedData.Attribute.GetUProperty();
-	UProperty* healthProperty = FindFieldChecked<UProperty>(UAttributeSetBase::StaticClass(), GET_MEMBER_NAME_CHECKED(UAttributeSetBase, Health));
-
-	if (changedProperty == healthProperty)
+	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
 	{
+		SetHealth(FMath::Clamp(GetHealth(), 0.0f, GetMaxHealth()));
 		HealthChanged.Broadcast(Health.GetCurrentValue(), MaxHealth.GetCurrentValue());
 	}
 }

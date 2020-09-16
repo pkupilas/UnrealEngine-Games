@@ -4,9 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "AttributeSet.h"
+#include "AbilitySystemComponent.h"
 #include "AttributeSetBase.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FHealthChanged, float, CurrentHealth, float, MaxHealth);
+#define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
+	GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
+	GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
+	GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
+	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
+
 
 UCLASS()
 class GAS_API UAttributeSetBase : public UAttributeSet
@@ -14,12 +20,15 @@ class GAS_API UAttributeSetBase : public UAttributeSet
 	GENERATED_BODY()
 
 public:
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FHealthChanged, float, CurrentHealth, float, MaxHealth);
 	UAttributeSetBase();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttributeSetBase")
-		FGameplayAttributeData Health;
+	FGameplayAttributeData Health;
+	ATTRIBUTE_ACCESSORS(UAttributeSetBase, Health)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttributeSetBase")
-		FGameplayAttributeData MaxHealth;
+	FGameplayAttributeData MaxHealth;
+	ATTRIBUTE_ACCESSORS(UAttributeSetBase, MaxHealth)
 
 	FHealthChanged HealthChanged;
 

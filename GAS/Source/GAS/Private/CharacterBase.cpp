@@ -10,6 +10,7 @@ ACharacterBase::ACharacterBase()
 	PrimaryActorTick.bCanEverTick = true;
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>("AbilitySystemComponent");
 	AttributeSetBase = CreateDefaultSubobject<UAttributeSetBase>("AttributeSetBase");
+	bIsDied = false;
 }
 
 // Called when the game starts or when spawned
@@ -51,7 +52,13 @@ void ACharacterBase::AquireAbility(TSubclassOf<UGameplayAbility> AbilityToAquire
 	AbilitySystemComponent->InitAbilityActorInfo(this, this);
 }
 
-void ACharacterBase::OnHealthChanged_Implementation(float CurrentHealth, float MaxHealth)
+void ACharacterBase::OnHealthChanged(float CurrentHealth, float MaxHealth)
 {
+	HealthChanged.Broadcast(CurrentHealth, MaxHealth);
+	if (CurrentHealth <= 0.0f && !bIsDied)
+	{
+		bIsDied = true;
+		CharacterDied.Broadcast(this);
+	}
 }
 

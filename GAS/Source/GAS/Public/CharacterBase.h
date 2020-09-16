@@ -7,9 +7,8 @@
 #include "AbilitySystemInterface.h"
 #include "AbilitySystemComponent.h"
 #include "Abilities/GameplayAbility.h"
+#include "AttributeSetBase.h"
 #include "CharacterBase.generated.h"
-
-class UAttributeSetBase;
 
 UCLASS()
 class GAS_API ACharacterBase : public ACharacter, public IAbilitySystemInterface
@@ -17,27 +16,27 @@ class GAS_API ACharacterBase : public ACharacter, public IAbilitySystemInterface
 	GENERATED_BODY()
 
 public:
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCharacterDied, ACharacterBase*, Character);
 	ACharacterBase();
-
-protected:
-	virtual void BeginPlay() override;
-
-public:	
 	virtual void Tick(float DeltaTime) override;
-
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "CharacterBase")
-		UAbilitySystemComponent* AbilitySystemComponent;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "CharacterBase")
-		UAttributeSetBase* AttributeSetBase;
-
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 	UFUNCTION(BlueprintCallable, Category = "CharacterBase")
-		void AquireAbility(TSubclassOf<UGameplayAbility> AbilityToAquire);
+	void AquireAbility(TSubclassOf<UGameplayAbility> AbilityToAquire);
+	UFUNCTION()
+	void OnHealthChanged(float CurrentHealth, float MaxHealth);
 
-	UFUNCTION(BlueprintNativeEvent)
-		void OnHealthChanged(float CurrentHealth, float MaxHealth);
-		void OnHealthChanged_Implementation(float CurrentHealth, float MaxHealth);
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "CharacterBase")
+	UAbilitySystemComponent* AbilitySystemComponent;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "CharacterBase")
+	UAttributeSetBase* AttributeSetBase;
+	UPROPERTY(BlueprintAssignable)
+	UAttributeSetBase::FHealthChanged HealthChanged;
+	UPROPERTY(BlueprintAssignable)
+	FCharacterDied CharacterDied;
+
+protected:
+	virtual void BeginPlay() override;
+	bool bIsDied;
 };
