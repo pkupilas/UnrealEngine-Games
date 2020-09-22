@@ -2,8 +2,11 @@
 
 #include "CharacterBase.h"
 #include "AttributeSetBase.h"
+#include "GameFramework/Controller.h"
+#include "GameFramework/PlayerController.h"
+#include "AIController.h"
+#include "BrainComponent.h"
 
-// Sets default values
 ACharacterBase::ACharacterBase()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -11,23 +14,31 @@ ACharacterBase::ACharacterBase()
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>("AbilitySystemComponent");
 	AttributeSetBase = CreateDefaultSubobject<UAttributeSetBase>("AttributeSetBase");
 	bIsDied = false;
+	TeamId = 255;
 }
 
-// Called when the game starts or when spawned
 void ACharacterBase::BeginPlay()
 {
 	Super::BeginPlay();
 	AttributeSetBase->HealthChanged.AddDynamic(this, &ACharacterBase::OnHealthChanged);
+	SetTeamId();
 }
 
-// Called every frame
+void ACharacterBase::SetTeamId()
+{
+	AController* Controller = GetController();
+	if (Controller && Controller->IsPlayerController())
+	{
+		TeamId = 0;
+	}
+}
+
 void ACharacterBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
 
-// Called to bind functionality to input
 void ACharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
@@ -52,13 +63,38 @@ void ACharacterBase::AquireAbility(TSubclassOf<UGameplayAbility> AbilityToAquire
 	AbilitySystemComponent->InitAbilityActorInfo(this, this);
 }
 
+bool ACharacterBase::IsHostileToOwner(ACharacterBase* Character) const
+{
+	return Character && Character->GetTeamId() != TeamId;
+}
+
+uint8 ACharacterBase::GetTeamId() const
+{
+	return TeamId;
+}
+
 void ACharacterBase::OnHealthChanged(float CurrentHealth, float MaxHealth)
 {
 	HealthChanged.Broadcast(CurrentHealth, MaxHealth);
 	if (CurrentHealth <= 0.0f && !bIsDied)
 	{
 		bIsDied = true;
+		DisableInput();
 		CharacterDied.Broadcast(this);
 	}
 }
 
+void ACharacterBase::DisableInput()
+{
+	APlayerController* PlayerController = Cast<APlayerController>(GetController());
+	if (PlayerController)
+	{
+		PlayerController->DisableInput(PlayerController);
+	}
+
+	AAIController* AiController = Cast<AAIController>(GetController());
+	if (AiController)
+	{
+		AiController->GetBrainComponent()->StopLogic("Dead");
+	}
+}

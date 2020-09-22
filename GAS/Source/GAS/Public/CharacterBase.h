@@ -24,6 +24,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "CharacterBase")
 	void AquireAbility(TSubclassOf<UGameplayAbility> AbilityToAquire);
+	UFUNCTION(BlueprintPure, Category = "CharacterBase")
+	bool IsHostileToOwner(ACharacterBase* Character) const;
+	uint8 GetTeamId() const;
+
 	UFUNCTION()
 	void OnHealthChanged(float CurrentHealth, float MaxHealth);
 
@@ -39,4 +43,9 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	bool bIsDied;
+	uint8 TeamId;
+	void SetTeamId();
+
+private:
+	void DisableInput();
 };
